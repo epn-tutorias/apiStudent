@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h1= title
+  p Por favor llene cada una de las casillas para el #{title}
+  form(action="/students/student", method="post")
+    div.input
+      br
+      span.label Nombre 
+      input(type="text", name="tutorName")
+      br
+      span.label Apellido 
+      input(type="text", name="tutorLastName")
+      br
+      span.label Correo electronico 
+      input(type="text", name="tutorEmail")
+      br
+      span.label Contrasena del tutor
+      input(type="password", name="tutorPassword")
+      br
+      span.label Codigo del tutor
+      input(type="number", name="tutorCod")
+      br
+      span.label Numero Celular del tutor
+      input(type="number", name="tutorCellPhone")
+      br
+      span.label Numero telefonico convencional del tutor
+      input(type="number", name="tutorPhone")
+      br
+      span.label Numero de estudiantes asignados al tutor
+      input(type="number", name="tutorCantStudents")
+      br
+    div.actions
+      input(type="submit", value="Enviar")
+
+
+
+     
