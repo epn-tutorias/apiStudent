@@ -8,13 +8,16 @@ var studentSchema = new Schema({
 	studentLastName 	: { type : String},
 	studentEmail 		: { type : String},
 	studentCareer	 	: { type : String},
-	studentRol 		: { type : String},
+	studentRol 			: { type : String},
 	studentPassword 	: { type : String},
 	studentTutor		: { type : String},
-	provider 		: { type : String},
-	provider_id 	: { type : String, unique : true},
-	photo			: { type : String},
-	createdAt		: { type : Date, default : Date.now}  
+	studentPeriod		: { type : String},
+	studentCreditsAc	: { type : Number},
+	studentCod			: { type : Number},  
+	provider 			: { type : String},
+	provider_id 		: { type : String, unique : true},
+	photo				: { type : String},
+	createdAt			: { type : Date, default : Date.now}  
 })
 
-module.exports = mongoose.model('Users', userSchema)
+module.exports = mongoose.model('Students', studentSchema)
