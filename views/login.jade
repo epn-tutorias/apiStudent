@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+    p.subheading Por favor llena los espacios para iniciar sesion
+    form(action="/sessions/loginAuthenticate", method="post")
+      div.input
+        br
+        label Mail del usuario
+        input(type="text", name="userEmail")
+        br
+        label Contrasena
+        input(type="text", name="userPass")
+      div.actions
+        input(type="submit", value="Ingresar")

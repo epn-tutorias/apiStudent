@@ -12,6 +12,7 @@ var tutorSchema = new Schema({
 	tutorPhone   		: { type : Number},
 	tutorCellPhone		: { type : Number},
 	tutorCantStudents	: { type : Number},
+	tutorIdent			: { type : Number}, 
 	createdAt			: { type : Date, default : Date.now}  
 })
 

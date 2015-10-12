@@ -1,5 +1,23 @@
 extends layout
 
 block content
+  script(src='./javascripts/main.js')
   h1= title
-  p #{title}
+  div
+  table
+    thead
+      tr: #{title}
+    tbody
+    each val, index in tutors
+      tr
+        td= index + ' ' + val.tutorName
+        td= val.tutorLastName
+        td= val.tutorEmail
+        td= val.tutorPhone
+        td= val.tutorCareer
+        td= val.tutorCantStudents
+        td= val.tutorCellPhone
+        td= val.tutorCreditsAc
+        td= val.tutorCod
+        td= val.tutorIdent
+ 

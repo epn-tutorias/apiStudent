@@ -19,7 +19,9 @@ block content
       input(type="password", name="studentPassword")
       br
       span.label Tutor del estudiante
-      input(type="text", name="studentTutor")
+      select(id='selectTutor', name="studentTutor")
+        each val in tutors
+          option(value=val._id) #{val.tutorName} #{val.tutorLastName}
       br
       span.label Periodo de estudiante
       input(type="text", name="studentPeriod")

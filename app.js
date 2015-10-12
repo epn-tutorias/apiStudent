@@ -6,16 +6,20 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var methodOverride = require('method-override');
+var session       = require('express-session')
+
+var loggerW = require('./lib/logger')
 
 mongoose.connect('mongodb://localhost/students', function(err, res){
-  if(err) console.log('Error: to connecting to Database students. ' + err)
-  else console.log('Connected to Database students')
+  if(err) loggerW.error('Error: to connecting to Database students. ' + err)
+  else loggerW.info('Connected to Database students')
 })
 
 
-var routes = require('./routes/index');
-var students = require('./routes/students');
-var tutors = require('./routes/tutors');
+var routes =    require('./routes/index');
+var students =  require('./routes/students');
+var tutors =    require('./routes/tutors');
+var sessions =  require('./routes/sessions')
 
 var app = express();
 
@@ -32,9 +36,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride())
 
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true }))
+
+
+
 app.use('/', routes);
 app.use('/students', students);
 app.use('/tutors', tutors);
+app.use('/sessions', sessions)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

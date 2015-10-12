@@ -13,7 +13,8 @@ var studentSchema = new Schema({
 	studentPhone		: { type : Number},
 	studentCellPhone	: { type : Number},
 	studentCreditsAc	: { type : Number},
-	studentCod			: { type : Number},  
+	studentCod			: { type : Number},
+	studentIdent		: { type : Number},  
 	createdAt			: { type : Date, default : Date.now}  
 })
 
