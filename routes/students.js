@@ -6,37 +6,37 @@ var Students = require('../helper/studentHelper')
 var studentdb = Students()
 
 crearteStudent = function(req, res){
-	studentdb.createStudent(req, function (students) {
-		console.log(students)
-		res.send(students)
+	studentdb.createStudent(req, function (err, student) {
+		if (err) res.send(err)
+		else res.send('Student was create' + student)
 	})
 }
 
 findAllStudents = function(req, res){
-	studentdb.findAllStudents(function (students) {
-		console.log(students)
-		res.send(students)
+	studentdb.findAllStudents(function (err, students) {
+		if (err) res.send(err)
+		else res.send(students)
 	})
 }
 
 findIdStudent = function(req, res){
-	studentdb.findIdStudent(req.params.id, function (students) {
-		console.log(students)
-		res.send(students)
+	studentdb.findIdStudent(req.params.id, function (err, student) {
+		if (err) res.send(err)
+		else res.send(student)
 	})
 }
 
 updateStudents = function(req, res){
-	studentdb.updateStudent(req, function (students) {
-		console.log(students)
-		res.send(students)
+	studentdb.updateStudent(req, function (err, student) {
+		if (err) res.send(err)
+		else res.send(student)
 	})
 }
 
 deleteStudents = function(req, res){
-	studentdb.deleteStudent(req, function (students) {
-		console.log(students)
-		res.send(students)
+	studentdb.deleteStudent(req, function (err, student) {
+		if (err) res.send(err)
+		else res.send(student)
 	})
 }
 

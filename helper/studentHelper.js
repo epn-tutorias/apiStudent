@@ -5,15 +5,15 @@ module.exports = function(){
 
 		findAllStudents = function (callback){
 			Students.find(function (err, students){
-				if(err) logger.error('Error: ' + err)
-				else callback(students)
+				if(err) callback(err)
+				else callback(null, students)
 			})
 		}	
 
 		findIdStudent	=	function (_id, callback){
 			Students.findById(_id, function(err, student) {
-		  		if(err) logger.error('Error: ' + err)
-				else callback(student)	
+		  		if(err) callback(err)
+				else callback(null, student)	
 		  	})
 		}
 
@@ -35,8 +35,8 @@ module.exports = function(){
 				studentCod			= req.body.studentCod 		
 
 		  		student.save(function(err) {
-		  			if(err) logger.error('Error: ' + err)
-					else callback(student)
+		  			if(err) callback(err)
+					else callback(null, student)
 		  		})
 		  	})
 		}
@@ -61,16 +61,16 @@ module.exports = function(){
 				})
 
 				student.save(function (err){
-					if(err) logger.error('Error: ' + err)
-					else callback(student)
+					if(err) callback(err)
+					else callback(null, student)
 				})	
 		}
 
 		deleteStudent	=	function (req, callback){
 			Students.findById(req.params.id, function(err, student) {
 		  		student.remove(function(err) {
-		  			if(err) logger.error('Error: ' + err)
-					else callback(student)
+		  			if(err) callback(err)
+					else callback(null, student)
 		  		})
 		  	})
 		}
@@ -82,7 +82,8 @@ module.exports = function(){
 				.exec(getStudent)
 
 				function getStudent (err, student){
-					if(!err) callback(student)	
+					if(err) callback(err)
+					else callback(null, student)	
 				}
 		}
 

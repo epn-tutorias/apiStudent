@@ -4,33 +4,36 @@ var Tutors = require('../helper/tutorHelper')
 var tutordb = Tutors()
 
 findAllTutor = function (req, res) {
-	tutordb.findAllTutors(function (tutors) {
-		console.log(tutors)
+	tutordb.findAllTutors(function (err, tutors) {
 		res.send(tutors)
 	})
 }
 
 createTutor = function (req, res) {
-	tutordb.createTutor(req, function (tutor){
-		res.send(tutor)
+	tutordb.createTutor(req, function (err, tutor){
+		if(err) res.send(err)
+		else res.send('Tutor was create ' + tutor)
 	})
 }
 
 findIdTutors = function (req, res) {
-	tutordb.findIdTutor(req.params.id, function (tutor){
-		res.send(tutor)
+	tutordb.findIdTutor(req.params.id, function (err, tutor){
+		if(err) res.send(err)
+		else res.send('Tutor was create ' + tutor)
 	})
 }
 
 updateTutors = function (req, res){
-	tutordb.updateTutor(req, function (tutor){
-		res.send(tutor)
+	tutordb.updateTutor(req, function (err, tutor){
+		if(err) res.send(err)
+		else res.send('Tutor was create ' + tutor)
 	})
 }
 
 deleteTutors = function (req, res){
-	tutordb.deleteTutor(req, function (tutor){
-		res.send(tutor)
+	tutordb.deleteTutor(req, function (err, tutor){
+		if(err) res.send(err)
+		else res.send('Tutor was create ' + tutor)
 	})
 }
 

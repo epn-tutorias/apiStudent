@@ -5,15 +5,15 @@ module.exports = function(){
 
 	function findAllTutors (callback) {
 		Tutors.find(function  (err, tutors) {
-			if(err) logger.info('Error: ' + err)
-			else callback(tutors)
+			if(err) callback(err)
+			else callback(null, tutors)
 		})
 	}
 
 	function findIdTutor (_id, callback){
-		Tutors.findById(_id, function(err, tutor) {
-	  		if (err) logger.error('Error' + err)
-	  		else callback(tutor)
+		Tutors.findById(_id, function (err, tutor) {
+	  		if (err) callback(err)
+	  		else callback(null, tutor)
 	  	})
 	}
 
@@ -33,8 +33,8 @@ module.exports = function(){
 			tutor.tutorIdent				= req.body.tutorIdent
 
 			tutor.save(function (err){
-				if (err) logger.error('Error: ' + err)
-				else callback(tutor)
+				if (err) callback(err)
+				else callback(null, tutor)
 			})
 
 		})
@@ -57,8 +57,8 @@ module.exports = function(){
 		})
 
 		tutor.save(function (err){
-			if (err) logger.error('Error: ' + err)
-			else callback(tutor)
+			if (err) callback(err)
+			else callback(null, tutor)
 		})
 
 	}
@@ -66,9 +66,8 @@ module.exports = function(){
 	function deleteTutor (req, callback){
 		Tutors.findById(req.params.id, function (err, tutor){
 			tutor.remove(function (err){
-				if (err) logger.error('Error: ' + err)
-				else callback(tutor)
-					//logger.info('Tutor '  + req.params.id + ' was removed')
+				if (err) callback(err)
+				else callback(null, tutor)
 			})
 		})
 	}
