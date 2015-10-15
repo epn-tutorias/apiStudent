@@ -72,12 +72,25 @@ module.exports = function(){
 		})
 	}
 
+	autheTutor = function(userEmail, userPass, callback) {
+		Tutors.find()
+				.where('tutorEmail').equals(userEmail)
+				.where('tutorPassword').equals(userPass)
+				.exec(getTutor)
+
+				function getTutor (err, tutor){
+					if(err) callback(err)
+					else callback(null, tutor)	
+				}
+	}
+
 	return{
 		findAllTutors 	: findAllTutors,
 		findIdTutor		: findIdTutor,
 		updateTutor		: updateTutor,
 		createTutor		: createTutor,
-		deleteTutor		: deleteTutor
+		deleteTutor		: deleteTutor,
+		autheTutor		: autheTutor
 	}
 
 }

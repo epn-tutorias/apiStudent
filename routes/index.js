@@ -16,9 +16,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/createStudent', function (req, res){
-	tutordb.findAllTutors(function (tutors) {
-		studentdb.findAllStudents(function (students) {
-			res.render('createStudent', { title: 'Crear Estudiante',
+	tutordb.findAllTutors(function (err, tutors) {
+		studentdb.findAllStudents(function (err, students) {
+			if (err) res.send('Error: ' + err)
+			else res.render('createStudent', { title: 'Crear Estudiante',
 		  								students : students,
 		  								tutors : tutors })
 		})
@@ -29,15 +30,19 @@ router.get('/createTutor', function (req, res){
 	res.render('createTutor', { title: 'Registro de Tutor' })
 })
 
+router.get('/createUser', function (req, res){
+	res.render('createUser', { title: 'Registro de Usuario' })
+})
 
 router.get('/listTutors', function (req, res){
-	tutordb.findAllTutors(function (tutors) {
-		res.render('listTutors', { title: 'Lista de Tutores',
+	tutordb.findAllTutors(function (err, tutors) {
+		if(err) res.send('Error: ' + err)
+		else res.render('listTutors', { title: 'Lista de Tutores',
 	  								tutors: tutors})
 	})
 })
 router.get('/listStudents', function (req, res){
-	studentdb.findAllStudents(function (students) {
+	studentdb.findAllStudents(function (err, students) {
 		res.render('listStudents', { title: 'Lista de Students',
 	  								students : students })
 	})

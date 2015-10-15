@@ -4,7 +4,7 @@ var Schema = mongoose.Schema
 var userSchema = new Schema({
 	userName 		: { type : String},
 	userPassword 	: { type : String},
-	userRol			: { type : String, enum : ['admin' , 'user']},
+	userRol			: { type : String, enum : ['admin' , 'user'], default: 'user'},
 	userEmail 		: { type : String, match: [/.+\@.+\..+/, "Please fill a valid email address"]},
 	createdAt       : { type : Date, default : Date.now}
 })

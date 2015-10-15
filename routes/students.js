@@ -5,7 +5,7 @@ var logger = require('../lib/logger')
 var Students = require('../helper/studentHelper')
 var studentdb = Students()
 
-crearteStudent = function(req, res){
+createStudent = function(req, res){
 	studentdb.createStudent(req, function (err, student) {
 		if (err) res.send(err)
 		else res.send('Student was create' + student)
@@ -41,7 +41,7 @@ deleteStudents = function(req, res){
 }
 
 // POST create a Student
-router.post('/student', crearteStudent)
+router.post('/student', createStudent)
 
 /* GET students listing. */
 router.get('/students', findAllStudents);
