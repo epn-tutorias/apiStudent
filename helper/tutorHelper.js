@@ -73,6 +73,7 @@ module.exports = function(){
 	}
 
 	autheTutor = function(userEmail, userPass, callback) {
+		
 		Tutors.find()
 				.where('tutorEmail').equals(userEmail)
 				.where('tutorPassword').equals(userPass)

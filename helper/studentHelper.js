@@ -68,14 +68,17 @@ module.exports = function(){
 
 		deleteStudent	=	function (req, callback){
 			Students.findById(req.params.id, function(err, student) {
-		  		student.remove(function(err) {
-		  			if(err) callback(err)
-					else callback(null, student)
-		  		})
+		 
+		  			student.remove(function(err) {
+		  				if(err) callback(err)
+		  				else callback(null, student)
+		  			})
+		  		
 		  	})
 		}
 
 		autheStudent = function(userEmail, userPass, callback) {
+
 			Students.find()
 				.where('studentEmail').equals(userEmail)
 				.where('studentPassword').equals(userPass)

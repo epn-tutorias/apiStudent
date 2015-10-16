@@ -16,33 +16,37 @@ login = function  (req, res) {
 
 loginAuthenticate = function (req, res) {
 
-	studentdb.autheStudent(req.body.userEmail, req.body.userPass, function (err, student){
+	/*usersdb.autheUser(req.body.userEmail, req.body.userPass, function (err, user){
 		if(err){
-
-			tutordb.autheTutor(req.body.userEmail, req.body.userPass, function (err, tutor){
-				if(err){
-
-					usersdb.autheUser(req.body.userEmail, req.body.userPass, function (err, user){
-						if(err){
-							res.render('index', { title: 'Debes logearte antes de empezar.... GRACIAS!!!'})
-						}else{
-							req.session.name = user._id
-							res.render('menu', { title: 'Gracias por loguearte',
-														user : user })
-						}
-					})
-
-				}else{
-					req.session.name = tutor._id
-					res.render('menu', { title: 'Gracias por loguearte',
-												user : tutor })
-				}
-			})
-
+			res.render('index', { title: 'Debes logearte antes de empezar.... GRACIAS!!!'})
 		}else{
-			req.session.name = student._id
+			req.session.name = user._id
 			res.render('menu', { title: 'Gracias por loguearte',
-										user : student })
+										user : user })
+		}
+	})
+	*/
+/*	tutordb.autheTutor(req.body.userEmail, req.body.userPass, function (err, tutor){
+		console.log(tutor)
+		console.log('Err: ' + err)
+		if(err == null){
+			console.log('Err: ' + err)
+		}else{
+			req.session.name = tutor._id
+			res.render('menu', { title: 'Gracias por loguearte',
+										user : tutor })
+		}
+	})*/
+
+	studentdb.autheStudent(req.body.userEmail, req.body.userPass, function (err, student){
+
+		if(student.length > 0){
+			req.session.name = student[0]._id
+			res.render('menu', { title: 'Gracias por loguearte',
+										user : student
+									})
+		}else{
+			res.render('login', { title : "Por favor logueate"})
 		}
 	})
 }

@@ -3,21 +3,24 @@ extends layout
 block content
   h1= title
   div
-    table
-      thead
-        tr: #{title}
-      tbody
+    table(border='1')
+      tr: #{title}
+        th Cantidad
+        th Codigo
+        th Identificacion
+        th Nombre
+        th Apellido
+        th Carrera
+      if (students)
       each val, index in students
         tr
-          td= index + ' ' + val.studentName
-          td= val.studentLastName
-          td= val.studentEmail
-          td= val.studentTutor
-          td= val.studentPhone
-          td= val.studentCareer
-          td= val.studentPeriod
-          td= val.studentCellPhone
-          td= val.studentCreditsAc
+          td= index
+          td
+            a(href="/students/students/" + val._id.toString()) #{val.studentIdent}          
           td= val.studentCod
-          td= val.studentIdent
+          td= val.studentName
+          td= val.studentLastName
+          td= val.studentCareer
+          td 
+            a(href="/students/delete/" + val._id.toString()) Borrar
       

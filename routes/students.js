@@ -36,7 +36,7 @@ updateStudents = function(req, res){
 deleteStudents = function(req, res){
 	studentdb.deleteStudent(req, function (err, student) {
 		if (err) res.send(err)
-		else res.send(student)
+		else res.send('The student was delete')
 	})
 }
 
@@ -56,8 +56,6 @@ router.put('/students/:id', updateStudents)
 // DELETE - delete a register from student
 router.delete('/students/:id', deleteStudents)
 
-
-
-
+router.get('/delete/:id', deleteStudents)
 
 module.exports = router;

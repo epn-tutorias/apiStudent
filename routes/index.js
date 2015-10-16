@@ -42,10 +42,14 @@ router.get('/listTutors', function (req, res){
 	})
 })
 router.get('/listStudents', function (req, res){
-	studentdb.findAllStudents(function (err, students) {
-		res.render('listStudents', { title: 'Lista de Students',
-	  								students : students })
-	})
+	if (req.session.name){
+		studentdb.findAllStudents(function (err, students) {
+			res.render('listStudents', { title: 'Lista de Students',
+		  								students : students })
+		})
+	}else{
+		res.render('login')
+	}
 })
 
 module.exports = router;
