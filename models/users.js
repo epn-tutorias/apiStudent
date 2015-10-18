@@ -6,6 +6,7 @@ var userSchema = new Schema({
 	userPassword 	: { type : String},
 	userRol			: { type : String, enum : ['admin' , 'user'], default: 'user'},
 	userEmail 		: { type : String, match: [/.+\@.+\..+/, "Please fill a valid email address"]},
+	userStatus		: { type : Boolean, default : true},
 	createdAt       : { type : Date, default : Date.now}
 })
 

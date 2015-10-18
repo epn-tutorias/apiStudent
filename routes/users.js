@@ -45,5 +45,6 @@ router.get('/users', findAllUser)
 router.get('/users/:id', findIdUser)
 router.put('/users/:id', updateUser)
 router.delete('/users/:id', deleteUser)
+router.get('/delete/:id', deleteUser)
 
 module.exports = router

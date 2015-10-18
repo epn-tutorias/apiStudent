@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var async = require('async')
 
 var Students = require('../helper/studentHelper')
 var Tutors = require('../helper/tutorHelper')
@@ -16,39 +17,48 @@ login = function  (req, res) {
 
 loginAuthenticate = function (req, res) {
 
-	/*usersdb.autheUser(req.body.userEmail, req.body.userPass, function (err, user){
-		if(err){
-			res.render('index', { title: 'Debes logearte antes de empezar.... GRACIAS!!!'})
-		}else{
-			req.session.name = user._id
-			res.render('menu', { title: 'Gracias por loguearte',
-										user : user })
-		}
-	})
-	*/
-/*	tutordb.autheTutor(req.body.userEmail, req.body.userPass, function (err, tutor){
-		console.log(tutor)
-		console.log('Err: ' + err)
-		if(err == null){
-			console.log('Err: ' + err)
-		}else{
-			req.session.name = tutor._id
-			res.render('menu', { title: 'Gracias por loguearte',
-										user : tutor })
-		}
-	})*/
+	var usr = []
 
-	studentdb.autheStudent(req.body.userEmail, req.body.userPass, function (err, student){
+	async.series([autStudent, 
+					autTutor,
+					autUser],
+					userSession)
 
-		if(student.length > 0){
-			req.session.name = student[0]._id
-			res.render('menu', { title: 'Gracias por loguearte',
-										user : student
-									})
+	function autStudent (done){
+
+		studentdb.autheStudent(req.body.userEmail, req.body.userPass, function (err, student){
+			if (student.length > 0) usr = student
+
+			done()
+		})
+	}
+
+	function autTutor (done){
+		tutordb.autheTutor(req.body.userEmail, req.body.userPass, function (err, tutor){
+			if (tutor.length > 0) usr = tutor
+			
+			done()
+		})
+	}
+
+	function autUser (done){
+		usersdb.autheUser(req.body.userEmail, req.body.userPass, function (err, user){
+			if (user.length > 0) usr = user
+
+			done()
+		})
+	}
+
+	function userSession (err){
+
+		if(usr.length > 0){
+			req.session.name = usr[0]._id
+			res.render('menu', { title: 'Gracias por loguearte', user : usr})
 		}else{
 			res.render('login', { title : "Por favor logueate"})
 		}
-	})
+
+	}
 }
 
 /* GET home page. */

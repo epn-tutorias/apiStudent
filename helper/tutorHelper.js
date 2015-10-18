@@ -25,6 +25,7 @@ module.exports = function(){
 			tutor.tutorEmail 				= req.body.tutorEmail
 			tutor.tutorCareer	 			= req.body.tutorCareer
 			tutor.tutorRol 					= req.body.tutorRol
+			tutor.tutorDep					= req.body.tutorDep
 			tutor.tutorPassword	 			= req.body.tutorPassword
 			tutor.tutorCod					= req.body.tutorCod
 			tutor.tutorPhone   				= req.body.tutorPhone
@@ -48,6 +49,7 @@ module.exports = function(){
 			tutorEmail 			: req.body.tutorEmail,
 			tutorCareer	 		: req.body.tutorCareer,
 			tutorRol 			: req.body.tutorRol,
+			tutorDep			: req.body.tutorDep, 
 			tutorPassword	 	: req.body.tutorPassword,
 			tutorCod			: req.body.tutorCod,
 			tutorPhone   		: req.body.tutorPhone,

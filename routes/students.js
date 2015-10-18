@@ -36,7 +36,7 @@ updateStudents = function(req, res){
 deleteStudents = function(req, res){
 	studentdb.deleteStudent(req, function (err, student) {
 		if (err) res.send(err)
-		else res.send('The student was delete')
+		else res.redirect('../../listStudents')/*res.send('The student was delete')*/
 	})
 }
 

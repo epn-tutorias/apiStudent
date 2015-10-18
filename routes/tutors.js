@@ -19,21 +19,21 @@ createTutor = function (req, res) {
 findIdTutors = function (req, res) {
 	tutordb.findIdTutor(req.params.id, function (err, tutor){
 		if(err) res.send(err)
-		else res.send('Tutor was create ' + tutor)
+		else res.send(tutor)
 	})
 }
 
 updateTutors = function (req, res){
 	tutordb.updateTutor(req, function (err, tutor){
 		if(err) res.send(err)
-		else res.send('Tutor was create ' + tutor)
+		else res.send(tutor)
 	})
 }
 
 deleteTutors = function (req, res){
 	tutordb.deleteTutor(req, function (err, tutor){
 		if(err) res.send(err)
-		else res.send('Tutor was create ' + tutor)
+		else res.redirect('../../listTutors')
 	})
 }
 
@@ -46,5 +46,7 @@ router.get('/tutors/:id', findIdTutors)
 router.put('/tutors/:id', updateTutors)
 
 router.delete('/tutors/:id', deleteTutors)
+
+router.get('/delete/:id', deleteTutors)
 
 module.exports = router

@@ -9,6 +9,9 @@ var tutordb = Tutors()
 var Students = require('../helper/studentHelper')
 var studentdb = Students()
 
+var Users = require('../helper/userHelper')
+var userdb = Users()
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -41,6 +44,15 @@ router.get('/listTutors', function (req, res){
 	  								tutors: tutors})
 	})
 })
+
+router.get('/listUsers', function (req, res){
+	userdb.findAllUsers(function (err, users) {
+		if(err) res.send('Error: ' + err)
+		else res.render('listUsers', { title: 'Lista de Usuario',
+	  								users : users})
+	})
+})
+
 router.get('/listStudents', function (req, res){
 	if (req.session.name){
 		studentdb.findAllStudents(function (err, students) {

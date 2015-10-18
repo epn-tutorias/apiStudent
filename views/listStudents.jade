@@ -9,18 +9,18 @@ block content
         th Codigo
         th Identificacion
         th Nombre
-        th Apellido
         th Carrera
       if (students)
       each val, index in students
         tr
           td= index
-          td
-            a(href="/students/students/" + val._id.toString()) #{val.studentIdent}          
           td= val.studentCod
-          td= val.studentName
-          td= val.studentLastName
+          td= val.studentIdent
+          td= val.studentName + ' ' + val.studentLastName
           td= val.studentCareer
           td 
             a(href="/students/delete/" + val._id.toString()) Borrar
+  button(type="button",onclick="location.href='/createStudent';").
+    Crear Estudiante
+
       

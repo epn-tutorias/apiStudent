@@ -21,14 +21,19 @@ block content
       span.label Codigo del tutor
       input(type="number", name="tutorCod")
       br
+      span.label Numero de identificacion del tutor
+      input(type="number", name="tutorIdent")
+      br
+      span.label Departamento
+      select(id='selectDepartamento', name="tutorDep")
+          option(value='mecanica') Mecanica
+          option(value='materiales') Materiales
+      br
       span.label Numero Celular del tutor
       input(type="number", name="tutorCellPhone")
       br
       span.label Numero telefonico convencional del tutor
       input(type="number", name="tutorPhone")
-      br
-      span.label Numero de estudiantes asignados al tutor
-      input(type="number", name="tutorCantStudents")
       br
     div.actions
       input(type="submit", value="Enviar")

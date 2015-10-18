@@ -6,7 +6,7 @@ var studentSchema = new Schema({
 	studentLastName 	: { type : String},
 	studentEmail 		: { type : String, match: [/.+\@.+\..+/, "Please fill a valid email address"]},
 	studentCareer	 	: { type : String},
-	studentRol 			: { type : String},
+	studentRol 			: { type : String, default : 'student'},
 	studentPassword 	: { type : String},
 	studentTutor		: { type : Schema.Types.ObjectId, ref: 'Tutors' },
 	studentPeriod		: { type : String},
@@ -15,6 +15,7 @@ var studentSchema = new Schema({
 	studentCreditsAc	: { type : Number},
 	studentCod			: { type : Number},
 	studentIdent		: { type : Number},  
+	studentStatus		: { type : Boolean, default : true},
 	createdAt			: { type : Date, default : Date.now}  
 })
 

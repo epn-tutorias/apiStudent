@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  div
+  table(border='1')
+    tr: #{title}
+      th Numero
+      th Nombre
+      th Rol
+    each user, index in users
+      tr
+        td= index
+        td= user.userName
+        td= user.userRol
+        td
+          a(href="/users/delete/" + user._id.toString()) Borrar
