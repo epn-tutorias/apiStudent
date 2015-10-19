@@ -16,11 +16,12 @@ mongoose.connect('mongodb://localhost/students', function(err, res){
 })
 
 
-var routes =    require('./routes/index');
-var students =  require('./routes/students');
-var tutors =    require('./routes/tutors');
-var sessions =  require('./routes/sessions')
-var users =  require('./routes/users')
+var routes    =  require('./routes/index');
+var students  =  require('./routes/students');
+var tutors    =  require('./routes/tutors');
+var sessions  =  require('./routes/sessions')
+var users     =  require('./routes/users')
+var notes     =  require('./routes/notes')
 
 var app = express();
 
@@ -46,6 +47,7 @@ app.use('/students', students);
 app.use('/tutors', tutors);
 app.use('/sessions', sessions)
 app.use('/users',users)
+app.use('/notes', notes)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

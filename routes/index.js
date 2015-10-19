@@ -12,6 +12,9 @@ var studentdb = Students()
 var Users = require('../helper/userHelper')
 var userdb = Users()
 
+var Notes = require('../helper/noteHelper')
+var notedb = Notes()
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -37,6 +40,10 @@ router.get('/createUser', function (req, res){
 	res.render('createUser', { title: 'Registro de Usuario' })
 })
 
+router.get('/createNote', function (req, res){
+	res.render('createNote', { title: 'Nota' })
+})
+
 router.get('/listTutors', function (req, res){
 	tutordb.findAllTutors(function (err, tutors) {
 		if(err) res.send('Error: ' + err)
@@ -50,6 +57,14 @@ router.get('/listUsers', function (req, res){
 		if(err) res.send('Error: ' + err)
 		else res.render('listUsers', { title: 'Lista de Usuario',
 	  								users : users})
+	})
+})
+
+router.get('/listNotes', function (req, res){
+	notedb.findAllNotes(function (err, notes) {
+		if(err) res.send('Error: ' + err)
+		else res.render('listNotes', { title: 'Lista de Notas',
+	  								notes : notes})
 	})
 })
 

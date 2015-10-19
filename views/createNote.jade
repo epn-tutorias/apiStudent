@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  form(action="/notes/note", method="post")
+    div.input
+      br
+      span.label Titulo Nota
+      input(type="text", name="title")
+      br
+      span.label Nota
+      input(type='text', name="note")
+      br
+    div.actions
+      input(type="submit", value="Enviar")

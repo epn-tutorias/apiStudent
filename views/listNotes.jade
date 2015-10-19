@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  div
+    table(border='1')
+      tr: #{title}
+        th Cantidad
+        th Titulo
+        th Nota
+      if (notes)
+      each val, index in notes
+        tr
+          td= index
+          td= val.title
+          td= val.note
+          td 
+            a(href="/notes/delete/" + val._id.toString()) Borrar
+  button(type="button",onclick="location.href='/createNote';").
+    Crear Nota

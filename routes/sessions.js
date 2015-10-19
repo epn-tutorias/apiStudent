@@ -53,9 +53,9 @@ loginAuthenticate = function (req, res) {
 
 		if(usr.length > 0){
 			req.session.name = usr[0]._id
-			res.render('menu', { title: 'Gracias por loguearte', user : usr})
+			res.render('menu', { title: 'Gracias por entrar a nuestra plataforma', user : usr})
 		}else{
-			res.render('login', { title : "Por favor logueate"})
+			res.render('login', { title : "Por favor iniciar sesion"})
 		}
 
 	}
