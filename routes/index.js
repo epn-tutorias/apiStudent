@@ -33,18 +33,24 @@ router.get('/createStudent', function (req, res){
 })
 
 router.get('/createTutor', function (req, res){
-	res.render('createTutor', { title: 'Registro de Tutor' })
+	if (req.session.rol == 'user' && req.session.name != undefined) res.render('createTutor', { title: 'Registro de Tutor' })
+	else res.render('login')
 })
 
 router.get('/createUser', function (req, res){
-	res.render('createUser', { title: 'Registro de Usuario' })
+	if (req.session.rol == 'admin' && req.session.name != undefined) res.render('createUser', { title: 'Registro de Usuario' })
+	else res.render('login')
 })
 
-router.get('/createNote', function (req, res){
-	res.render('createNote', { title: 'Nota' })
+router.get('/createNote/:id', function (req, res){
+	studentdb.findIdStudent(req.params.id, function (err, student){
+		res.render('createNote', { title: 'Nota',
+								student : student })
+	})
 })
 
 router.get('/listTutors', function (req, res){
+
 	tutordb.findAllTutors(function (err, tutors) {
 		if(err) res.send('Error: ' + err)
 		else res.render('listTutors', { title: 'Lista de Tutores',
@@ -69,14 +75,21 @@ router.get('/listNotes', function (req, res){
 })
 
 router.get('/listStudents', function (req, res){
-	if (req.session.name){
-		studentdb.findAllStudents(function (err, students) {
+
+	if (req.session.rol == 'tutor' && req.session.name != undefined){
+		studentdb.findStudentByTutor(req.session.name, function (err, students) {
 			res.render('listStudents', { title: 'Lista de Students',
 		  								students : students })
 		})
-	}else{
+	}else if(req.session.rol == 'user' && req.session.name != undefined){
+		studentdb.findAllStudents(function (err, students) {
+						res.render('listStudents', { title: 'Lista de Students',
+					  								students : students })
+					})
+	}else {
 		res.render('login')
 	}
+
 })
 
 module.exports = router;

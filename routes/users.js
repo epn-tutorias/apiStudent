@@ -35,7 +35,7 @@ updateUser = function (req, res) {
 deleteUser = function (req, res) {
 	userdb.deleteUser(req, function (err, user){
 		if(err) res.send(err)
-		else res.send('User was delete' + user)
+		else res.redirect('../../listUsers')
 	})
 }
 

@@ -21,7 +21,7 @@ module.exports = function(){
 			note.title 			= req.body.title 
 			note.note 			= req.body.note 
 			note.student_id		= req.body.student_id
-			note.tutor_id 		= req.body.tutor_id 
+			note.tutor_id 		= req.session.name 
 
 			user.save(function (err){
 				if(err) callback(err)
@@ -35,7 +35,7 @@ module.exports = function(){
 			title			: req.body.title,
 			note 			: req.body.note,
 			student_id 		: req.body.student_id,
-			tutor_id		: req.body.tutor_id 
+			tutor_id		: req.session.name 
 		})
 
 		note.save(function (err){

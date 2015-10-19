@@ -14,12 +14,14 @@ block content
       each val, index in students
         tr
           td= index
-          td= val.studentCod
-          td= val.studentIdent
-          td= val.studentName + ' ' + val.studentLastName
-          td= val.studentCareer
+          td= val.Cod
+          td= val.Ident
+          td= val.Name + ' ' + val.LastName
+          td= val.Career
           td 
             a(href="/students/delete/" + val._id.toString()) Borrar
+          td
+            a(href="../../createNote/" + val._id.toString()) Crear Nota
   button(type="button",onclick="location.href='/createStudent';").
     Crear Estudiante
 

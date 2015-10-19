@@ -6,10 +6,17 @@ block content
     div.input
       br
       span.label Titulo Nota
+      br
       input(type="text", name="title")
       br
       span.label Nota
+      br
       input(type='text', name="note")
       br
+      span.label Estudiante
+      br
+      select(id='selectTutor', name="student_id")
+          option(value=student._id) #{student.studentName}
+      br 
     div.actions
       input(type="submit", value="Enviar")

@@ -2,20 +2,20 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var studentSchema = new Schema({
-	studentName 		: { type : String},
-	studentLastName 	: { type : String},
-	studentEmail 		: { type : String, match: [/.+\@.+\..+/, "Please fill a valid email address"]},
-	studentCareer	 	: { type : String},
-	studentRol 			: { type : String, default : 'student'},
-	studentPassword 	: { type : String},
-	studentTutor		: { type : Schema.Types.ObjectId, ref: 'Tutors' },
-	studentPeriod		: { type : String},
-	studentPhone		: { type : Number},
-	studentCellPhone	: { type : Number},
-	studentCreditsAc	: { type : Number},
-	studentCod			: { type : Number},
-	studentIdent		: { type : Number},  
-	studentStatus		: { type : Boolean, default : true},
+	Name 		: { type : String, required : true},
+	LastName 	: { type : String},
+	Email 		: { type : String, required : true, index: { unique: true }, match: [/.+\@.+\..+/, "Please fill a valid email address"]},
+	Career	 	: { type : String, default : 'mecanica'},
+	Rol 		: { type : String, default : 'student'},
+	Password 	: { type : String, required : true},
+	Tutor		: { type : Schema.Types.ObjectId, ref: 'Tutors' },
+	Period		: { type : String},
+	Phone		: { type : Number},
+	CellPhone	: { type : Number},
+	CreditsAc	: { type : Number},
+	Cod			: { type : Number},
+	Ident		: { type : Number, required : true},  
+	Status		: { type : Boolean, default : true},
 	createdAt			: { type : Date, default : Date.now}  
 })
 

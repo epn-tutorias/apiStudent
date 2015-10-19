@@ -11,7 +11,7 @@ block content
     each user, index in users
       tr
         td= index
-        td= user.userName
-        td= user.userRol
+        td= user.Name
+        td= user.Rol
         td
           a(href="/users/delete/" + user._id.toString()) Borrar

@@ -7,38 +7,49 @@ block content
     div.input
       br
       span.label Nombre
+      br
       input(type="text", name="studentName")
       br
       span.label Apellido
+      br
       input(type="text", name="studentLastName")
       br
       span.label Identidad
-      input(type="text", name="studenIdent")
+      br
+      input(type="text", name="studentIdent")
       br
       span.label Correo electronico
+      br
       input(type="text", name="studentEmail")
       br
       span.label Contrasena de estudiante
+      br
       input(type="password", name="studentPassword")
       br
       span.label Tutor del estudiante
+      br
       select(id='selectTutor', name="studentTutor")
         each val in tutors
-          option(value=val._id) #{val.tutorName} #{val.tutorLastName}
+          option(value=val._id) #{val.Name} #{val.LastName}
       br
       span.label Periodo de estudiante
+      br
       input(type="text", name="studentPeriod")
       br
       span.label Creditos acumulados de estudiante
+      br
       input(type="number", name="studentCreditsAc")
       br
       span.label Codigo de estudiante
+      br
       input(type="number", name="studentCod")
       br
       span.label Numero Celular de estudiante
+      br
       input(type="number", name="studentPhone")
       br
       span.label Numero telefonico convencional de estudiante
+      br
       input(type="number", name="studentCellPhone")
       br
     div.actions

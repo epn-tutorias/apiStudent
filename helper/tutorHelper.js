@@ -20,18 +20,18 @@ module.exports = function(){
 	function updateTutor (req, callback){
 		Tutors.findById(req.params.id, function (err, tutor){
 
-			tutor.tutorName 				= req.body.tutorName
-			tutor.tutorLastName 			= req.body.tutorLastName
-			tutor.tutorEmail 				= req.body.tutorEmail
-			tutor.tutorCareer	 			= req.body.tutorCareer
-			tutor.tutorRol 					= req.body.tutorRol
-			tutor.tutorDep					= req.body.tutorDep
-			tutor.tutorPassword	 			= req.body.tutorPassword
-			tutor.tutorCod					= req.body.tutorCod
-			tutor.tutorPhone   				= req.body.tutorPhone
-			tutor.tutorCellPhone			= req.body.tutorCellPhone
-			tutor.tutorCantStudents			= req.body.tutorCantStudents
-			tutor.tutorIdent				= req.body.tutorIdent
+			tutor.Name 				= req.body.tutorName
+			tutor.LastName 			= req.body.tutorLastName
+			tutor.Email 			= req.body.tutorEmail
+			tutor.Career	 		= req.body.tutorCareer
+			tutor.Rol 				= req.body.tutorRol
+			tutor.Dep				= req.body.tutorDep
+			tutor.Password	 		= req.body.tutorPassword
+			tutor.Cod				= req.body.tutorCod
+			tutor.Phone   			= req.body.tutorPhone
+			tutor.CellPhone			= req.body.tutorCellPhone
+			tutor.CantStudents		= req.body.tutorCantStudents
+			tutor.Ident				= req.body.tutorIdent
 
 			tutor.save(function (err){
 				if (err) callback(err)
@@ -44,18 +44,18 @@ module.exports = function(){
 	function createTutor (req, callback){
 
 		var tutor = new Tutors({
-			tutorName 			: req.body.tutorName,
-			tutorLastName 		: req.body.tutorLastName,
-			tutorEmail 			: req.body.tutorEmail,
-			tutorCareer	 		: req.body.tutorCareer,
-			tutorRol 			: req.body.tutorRol,
-			tutorDep			: req.body.tutorDep, 
-			tutorPassword	 	: req.body.tutorPassword,
-			tutorCod			: req.body.tutorCod,
-			tutorPhone   		: req.body.tutorPhone,
-			tutorCellPhone		: req.body.tutorCellPhone,
-			tutorCantStudents	: req.body.tutorCantStudents,
-			tutorIdent			: req.body.tutorIdent
+			Name 			: req.body.tutorName,
+			LastName 		: req.body.tutorLastName,
+			Email 			: req.body.tutorEmail,
+			Career	 		: req.body.tutorCareer,
+			Rol 			: req.body.tutorRol,
+			Dep				: req.body.tutorDep, 
+			Password	 	: req.body.tutorPassword,
+			Cod				: req.body.tutorCod,
+			Phone   		: req.body.tutorPhone,
+			CellPhone		: req.body.tutorCellPhone,
+			CantStudents	: req.body.tutorCantStudents,
+			Ident			: req.body.tutorIdent
 		})
 
 		tutor.save(function (err){
@@ -77,8 +77,8 @@ module.exports = function(){
 	autheTutor = function(userEmail, userPass, callback) {
 		
 		Tutors.find()
-				.where('tutorEmail').equals(userEmail)
-				.where('tutorPassword').equals(userPass)
+				.where('Email').equals(userEmail)
+				.where('Password').equals(userPass)
 				.exec(getTutor)
 
 				function getTutor (err, tutor){

@@ -20,19 +20,19 @@ module.exports = function(){
 		updateStudent	=	function (req, callback){
 
 			Students.findById(req.params.id, function(err, student) {
-		  		studentName 		= req.body.studentName 		 
-				studentLastName 	= req.body.studentLastName 	  
-				studentEmail 		= req.body.studentEmail 	  
-				studentCareer	 	= req.body.studentCareer 	  
-				studentRol 			= req.body.studentRol 		  
-				studentPassword 	= req.body.studentPassword 	  
-				studentTutor 		= req.body.studentTutor 
-				studentPeriod		= req.body.studentPeriod 	
-				studentPhone		= req.body.studentPhone 	 
-				studentCellPhone	= req.body.studentCellPhone 
-				studentCreditsAc	= req.body.studentCreditsAc 
-				studentIdent		= req.body.studentIdent		  
-				studentCod			= req.body.studentCod 		
+		  		student.Name 		= req.body.studentName 		 
+				student.LastName 	= req.body.studentLastName 	  
+				student.Email 		= req.body.studentEmail 	  
+				student.Career	 	= req.body.studentCareer 	  
+				student.Rol 		= req.body.studentRol 		  
+				student.Password 	= req.body.studentPassword 	  
+				student.Tutor 		= req.body.studentTutor 
+				student.Period		= req.body.studentPeriod 	
+				student.Phone		= req.body.studentPhone 	 
+				student.CellPhone	= req.body.studentCellPhone 
+				student.CreditsAc	= req.body.studentCreditsAc 
+				student.Ident		= req.body.studentIdent		  
+				student.Cod			= req.body.studentCod 		
 
 		  		student.save(function(err) {
 		  			if(err) callback(err)
@@ -45,19 +45,19 @@ module.exports = function(){
 			  	
 			  	var student = new Students ({
 				
-					studentName 		: req.body.studentName,  
-					studentLastName 	: req.body.studentLastName,  
-					studentEmail 		: req.body.studentEmail,  
-					studentCareer	 	: req.body.studentCareer,  
-					studentRol 			: req.body.studentRol,  
-					studentPassword 	: req.body.studentPassword,  
-					studentTutor 		: req.body.studentTutor, 
-					studentPeriod		: req.body.studentPeriod,  
-					studentPhone		: req.body.studentPhone,  
-					studentCellPhone	: req.body.studentCellPhone,  
-					studentCreditsAc	: req.body.studentCreditsAc,
-					studentIdent		: req.body.studentIdent,  
-					studentCod			: req.body.studentCod 		
+					Name 		: req.body.studentName,  
+					LastName 	: req.body.studentLastName, 
+					Ident		: req.body.studentIdent,  
+					Email 		: req.body.studentEmail,  
+					Career	 	: req.body.studentCareer,  
+					Rol 		: req.body.studentRol,  
+					Password 	: req.body.studentPassword,  
+					Tutor 		: req.body.studentTutor, 
+					Period		: req.body.studentPeriod,  
+					Phone		: req.body.studentPhone,  
+					CellPhone	: req.body.studentCellPhone,  
+					CreditsAc	: req.body.studentCreditsAc, 
+					Cod			: req.body.studentCod 		
 				})
 
 				student.save(function (err){
@@ -79,13 +79,24 @@ module.exports = function(){
 		autheStudent = function(userEmail, userPass, callback) {
 
 			Students.find()
-				.where('studentEmail').equals(userEmail)
-				.where('studentPassword').equals(userPass)
+				.where('Email').equals(userEmail)
+				.where('Password').equals(userPass)
 				.exec(getStudent)
 
 				function getStudent (err, student){
 					if(err) callback(err)
 					else callback(null, student)	
+				}
+		}
+
+		findStudentByTutor = function (idTutor, callback){
+			Students.find()
+				.where('Tutor').equals(idTutor)
+				.exec(getStudentsByTutor)
+
+				function getStudentsByTutor (err, students){
+					if(err) callback(err)
+					else callback(null, students) 
 				}
 		}
 
@@ -95,6 +106,7 @@ module.exports = function(){
 			autheStudent 	: autheStudent,
 			updateStudent	: updateStudent,
 			createStudent	: createStudent,
-			deleteStudent	: deleteStudent
+			deleteStudent	: deleteStudent,
+			findStudentByTutor : findStudentByTutor
 		}
 }

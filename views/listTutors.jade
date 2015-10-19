@@ -14,10 +14,10 @@ block content
     each val, index in tutors
       tr
         td= index
-        td= val.tutorIdent
-        td= val.tutorCod
-        td= val.tutorName + ' ' + val.tutorLastName
-        td= val.tutorCantStudents
+        td= val.Ident
+        td= val.Cod
+        td= val.Name + ' ' + val.LastName
+        td= val.CantStudents
         td
           a(href="/tutors/delete/" + val._id.toString()) Borrar
         
