@@ -34,6 +34,7 @@ module.exports = function(){
 		var user = new Users({
 			Name		: req.body.userName,
 			Password 	: req.body.userPassword,
+			Rol 		: req.body.userRol,
 			Email 		: req.body.userEmail 
 		})
 

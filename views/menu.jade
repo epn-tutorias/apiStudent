@@ -2,7 +2,20 @@ extends layout
 
 block content
   h1= title
-  p Que quieres hacer #{user[0].studentName}
-  p #{user}
+  p Que quieres hacer #{user[0].Name}?
+  if(user[0].Rol == 'tutor')
+    a(href="/listStudents") Lista de estudiantes
+  if(user[0].Rol == 'user' || user[0].Rol == 'admin')
+    a(href="/listStudents") Lista de estudiantes
+    br
+    a(href="/listTutors") Lista de tutores
+    br
+    a(href="/listUsers") Lista de usuarios
+    br
+    a(href="/listNotes") Lista de notas
+  if(user[0].Rol == 'student')
+    a(href="/listNotes/" + user[0]._id.toString()) Lista de notas
+
+  
   
   

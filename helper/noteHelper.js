@@ -16,6 +16,21 @@ module.exports = function(){
 		})
 	}
 
+	function findNoteByStudent (_id, callback){
+		Notes.find()
+			.where('student_id').equals(_id)
+			.exec(getStudentNotes)
+
+			function getStudentNotes (err, notes){
+				if(err) callback(err)
+				else callback(null, notes)	
+			}
+	}
+
+	function findNoteByTutor (_id, callback){
+
+	}
+
 	function updateNote (req, callback){
 		Notes.findById(req.params.id, function (err, note){
 			note.title 			= req.body.title 
@@ -57,6 +72,8 @@ module.exports = function(){
 	return {
 		findAllNotes 	: findAllNotes,
 		findIdNote 		: findIdNote,
+		findNoteByStudent :findNoteByStudent,
+		findNoteByTutor :findNoteByTutor,
 		updateNote		: updateNote,
 		createNote		: createNote,
 		deleteNote		: deleteNote

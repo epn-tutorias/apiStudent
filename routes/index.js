@@ -33,12 +33,13 @@ router.get('/createStudent', function (req, res){
 })
 
 router.get('/createTutor', function (req, res){
-	if (req.session.rol == 'user' && req.session.name != undefined) res.render('createTutor', { title: 'Registro de Tutor' })
+	if (req.session.rol == 'user' || req.session.rol == 'admin' && req.session.name != undefined) res.render('createTutor', { title: 'Registro de Tutor' })
 	else res.render('login')
 })
 
 router.get('/createUser', function (req, res){
-	if (req.session.rol == 'admin' && req.session.name != undefined) res.render('createUser', { title: 'Registro de Usuario' })
+	if (req.session.rol == 'user' || req.session.rol == 'admin' && req.session.name != undefined) 
+		res.render('createUser', { title: 'Registro de Usuario' })
 	else res.render('login')
 })
 
@@ -50,24 +51,39 @@ router.get('/createNote/:id', function (req, res){
 })
 
 router.get('/listTutors', function (req, res){
-
-	tutordb.findAllTutors(function (err, tutors) {
-		if(err) res.send('Error: ' + err)
-		else res.render('listTutors', { title: 'Lista de Tutores',
-	  								tutors: tutors})
-	})
+	if(req.session.rol == 'user' || req.session.rol == 'admin' && req.session.name != undefined){
+		tutordb.findAllTutors(function (err, tutors) {
+			if(err) res.send('Error: ' + err)
+			else res.render('listTutors', { title: 'Lista de Tutores',
+		  								tutors: tutors})
+		})
+	}else{
+		res.render('login')
+	}
 })
 
 router.get('/listUsers', function (req, res){
-	userdb.findAllUsers(function (err, users) {
-		if(err) res.send('Error: ' + err)
-		else res.render('listUsers', { title: 'Lista de Usuario',
-	  								users : users})
-	})
+	if(req.session.rol == 'user' || req.session.rol == 'admin' && req.session.name != undefined) {
+		userdb.findAllUsers(function (err, users) {
+			if(err) res.send('Error: ' + err)
+			else res.render('listUsers', { title: 'Lista de Usuario',
+		  								users : users})
+		})
+	}else{
+		res.render('login')
+	}
 })
 
 router.get('/listNotes', function (req, res){
 	notedb.findAllNotes(function (err, notes) {
+		if(err) res.send('Error: ' + err)
+		else res.render('listNotes', { title: 'Lista de Notas',
+	  								notes : notes})
+	})
+})
+
+router.get('/listNotes/:id', function (req, res){
+	notedb.findNoteByStudent(req.params.id, function (err, notes) {
 		if(err) res.send('Error: ' + err)
 		else res.render('listNotes', { title: 'Lista de Notas',
 	  								notes : notes})
@@ -81,7 +97,7 @@ router.get('/listStudents', function (req, res){
 			res.render('listStudents', { title: 'Lista de Students',
 		  								students : students })
 		})
-	}else if(req.session.rol == 'user' && req.session.name != undefined){
+	}else if(req.session.rol == 'user' || req.session.rol == 'admin' && req.session.name != undefined){
 		studentdb.findAllStudents(function (err, students) {
 						res.render('listStudents', { title: 'Lista de Students',
 					  								students : students })

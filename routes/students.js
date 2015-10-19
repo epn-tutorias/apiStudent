@@ -8,7 +8,7 @@ var studentdb = Students()
 createStudent = function(req, res){
 	studentdb.createStudent(req, function (err, student) {
 		if (err) res.send(err)
-		else res.send('Student was create' + student)
+		else res.redirect('../../listStudents')
 	})
 }
 
