@@ -15,6 +15,8 @@ var userdb = Users()
 var Notes = require('../helper/noteHelper')
 var notedb = Notes()
 
+var mail = require('../lib/mail')
+var mailTo = mail()
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -31,6 +33,11 @@ router.get('/createStudent', function (req, res){
 		})
 	})
 })
+
+router.get('/createQuiz', function (req, res){
+	res.render('createProfessional')
+})
+
 
 router.get('/createTutor', function (req, res){
 	if (req.session.rol == 'user' || req.session.rol == 'admin' && req.session.name != undefined) res.render('createTutor', { title: 'Registro de Tutor' })
@@ -106,6 +113,14 @@ router.get('/listStudents', function (req, res){
 		res.render('login')
 	}
 
+})
+
+
+router.get('/mail', function (req, res){
+	mailTo.sendMail(function (err, response){
+		if(err) console.log(err)
+		else res.send('Success')
+	})
 })
 
 module.exports = router;

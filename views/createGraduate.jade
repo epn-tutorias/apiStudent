@@ -3,7 +3,6 @@ extends layout
 block content
   h1= title
   p Por favor llene cada una de las casillas para el #{title}
-
   form(action="/students/student", method="post")
     div.input
       br
@@ -14,12 +13,6 @@ block content
       span.label Apellido
       br
       input(type="text", name="studentLastName")
-      br
-      span.label Genero
-      br
-      select(id='studentGenere', name="studentGenere")
-        option(value='male') Male
-        option(value='female') Female
       br
       span.label Identidad
       br

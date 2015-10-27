@@ -1,0 +1,155 @@
+extends layout
+
+block content
+  h1= title
+  p Por favor llene cada una de las casillas para el #{title}
+
+  - var years = ['2005 o antes' , '2006' , '2007' , '2008' , '2009' , '2010' , '2011' , '2012' , '2013' , '2014' , '2015']
+
+  - var age = ['21' , '22' , '23' , '24' , '25' , '26' , '27' , '28' , '29' , '30 o mas']
+
+  - var studies = ['Maestria' , 'Doctorado' , 'Especializacion' , 'Cursos o Seminarios']
+
+  - var enjoyTime = ['Antes de Graduarse' , 'Entre 0 y 6 meses' , 'De 7 a 12 meses' , 'Más de 1 año']
+
+  - var report = ['Bolsa de empleo de EPN' , 'Carteleras de la Facultad' , 'Recomendación de un profesor' , 'Otro medio']
+
+  - var difficultyGetWork = ['Su título no era el adecuado para los requerimientos' , 'Remuneración no adecuada' , 'No habían ofertas laborales' , 'No tuvo dificultad']
+
+  - var workType = ['Sector Público' , 'Sector Privado' , 'Por cuenta Propia' , 'Desempleado']
+
+  - var workPosition = ['Directiva' , 'Mando Medio' , 'Operativa' , 'No aplica']
+
+  -var workActivity = ['Planificación, Diseño y Supervisión' , 'Ejecución de proyectos y Trabajo de campo' , 'Ejercicio de Docencia' , 'Marketing de Equipos, Productos o servicios Técnicos']
+
+  - var salary = ['Menor a $700' , 'Entre $701-$1100' , 'Entre $1101-$1500' , 'Entre $1501-$1800' , 'Entre $1801-$2200', 'Entre $2201-$2600 ' , 'Entre $2601-$3000' , 'Mayor $3000']
+
+  - var skills = ['Compromiso de aprendizaje a lo largo de toda la vida' , 'Participar en equipos de trabajo multidisciplinarios' , 'Capacidad para tomar la iniciativa y ser proactivo en el trabajo' , 'Sensibilidad por el medio ambiente' ,'Capacidad y habilidad de comunicación utilizando medios escritos, orales y digitales', 'Formular, planificar y evaluar proyectos de ingeniería', 'Habilidad de llevar la teoría a la práctica']
+
+  form(action="", method="post")
+    div.input
+      br
+      span.label ¿Año de de graduacion?
+      br
+      select(id='', name="")
+        each val  in years
+          option(value='') #{val}
+      br
+
+      span.label ¿Edad en la que se graduo?
+      br
+      select(id='', name="")
+        each val  in age
+          option(value='') #{val}
+      br
+
+      span.label ¿Califique la formacion en las siguientes areas en la FIM
+      br
+      input(type="password", name="")
+      br
+
+      span.label ¿Que estudios posteriores esta realizando o ha realizado?
+      br
+      select(id='', name="")
+        each val  in studies
+          option(value='') #{val}
+      br
+
+      span.label ¿Qué tiempo tardó en conseguir su primer empleo relacionado con su profesión?
+      br
+      select(id='', name="")
+        each val  in enjoyTime
+          option(value='') #{val}
+      br
+
+      span.label El medio por el que se informó y/o consiguió su primer empleo relacionado con su profesión fue:
+      br
+      select(id='', name="")
+        each val  in report
+          option(value='') #{val}
+      br
+
+      span.label La mayor dificultad para conseguir empleo relacionado con su profesión fue:
+      br
+      select(id='', name="")
+        each val  in difficultyGetWork
+          option(value='') #{val}
+      br
+
+      span.label Su actual trabajo lo realiza en:
+      br
+      select(id='', name="")
+        each val  in workType
+          option(value='') #{val}
+      br
+
+      span.label Su posición dentro de su actual trabajo es:
+      br
+      select(id='', name="")
+        each val  in workPosition
+          option(value='') #{val}
+      br
+
+      span.label Califique el grado de influencia que tuvieron para ser elegido en su actual empleo los siguientes aspectos:
+      br
+      input(type="text", name="")
+      br
+
+      span.label Califique el grado de relación de sus actividades laborarles actuales con su carrera
+      br
+      input(type="text", name="")
+      br
+
+      span.label Su actividad actual relacionada con su carrera la realiza en el ámbito de:
+      br
+      select(id='', name="")
+        each val  in workActivity
+          option(value='') #{val}
+      br
+
+      span.label Su ingreso actual está dentro del rango:
+      br
+      select(id='', name="")
+        each val  in salary
+          option(value='') #{val}
+      br
+
+      span.label Valore el desarrollo de las siguientes capacidades, habilidades, o actitudes adquiridas durante su carrera y compare con las requeridas por el medio laboral donde realiza sus actividades.
+      br
+      select(id='', name="")
+        each val  in skills
+          option(value='') #{val}
+      br
+
+      span.label Indique en pocas palabras ¿qué otra competencia o habilidad debería desarrollarse durante la carrera para posibilitar un mejor desempeño profesional?
+      br
+      input(type="text", name="")
+      br
+
+      span.label  Valore  cómo  estuvo  preparado  cuando  terminó  su  carrera  y  compare  con  los requerimientos del medio laboral para desempeñarse en los siguientes campos
+      br
+      input(type="text", name="")
+      br
+
+      span.label Valore  el  grado  de  formación  adquirido  cuando  terminó  su  carrera,  e  indique  la prioridad de fortalecer las siguientes áreas para conseguir un mejor desempeño laboral de los futuros graduados.
+      br
+      input(type="text", name="")
+      br
+
+      span.label Indique en pocas palabras ¿qué otra competencia o habilidad debería desarrollarse durante la carrera para posibilitar un mejor desempeño profesional?
+      br
+      input(type="text", name="")
+      br
+
+      span.label Indique en pocas palabras ¿qué otro aspecto técnico debería desarrollarse en la carrera para posibilitar un mejor desempeño profesional?
+      br
+      input(type="text", name="")
+      br
+
+      span.label Indique en pocas palabras ¿qué otra materia técnica debería impartirse en la carrera para posibilitar un mejor desempeño profesional?
+      br
+      input(type="text", name="")
+      br
+
+    div.actions
+      input(type="submit", value="Enviar")
