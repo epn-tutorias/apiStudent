@@ -18,9 +18,12 @@ var notedb = Notes()
 var mail = require('../lib/mail')
 var mailTo = mail()
 
+var questions = require('../helper/questionsHelper')
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'APP gestion de Tutorias EPN FIM' });
+
+  res.render('index', { title: 'APP gestion de Tutorias EPN FIM'});
 });
 
 router.get('/createStudent', function (req, res){
@@ -35,7 +38,8 @@ router.get('/createStudent', function (req, res){
 })
 
 router.get('/createQuiz', function (req, res){
-	res.render('createProfessional')
+	console.log(questions)
+	res.render('createProfessional', {prueba : questions})
 })
 
 
