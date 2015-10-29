@@ -6,53 +6,51 @@ block content
   form(action="/students/student", method="post")
     div.input
       br
-      span.label Nombre
+      span.label Nombre de la empresa en donde hace la pasantia
       br
-      input(type="text", name="studentName")
+      input(type="text", name="")
       br
-      span.label Apellido
+
+      span.label Numero de contacto en la empresa
       br
-      input(type="text", name="studentLastName")
+      input(type="text", name="")
       br
-      span.label Identidad
+
+      span.label Direccion de la empresa
       br
-      input(type="text", name="studentIdent")
+      input(type="text", name="")
       br
-      span.label Correo electronico
+
+      span.label Ciudad en donde esta ubicada la empresa
       br
-      input(type="text", name="studentEmail")
+      input(type="text", name="")
       br
-      span.label Contrasena de estudiante
+
+      span.label Nombre de la persona de contacto en la empresa
       br
-      input(type="password", name="studentPassword")
+      input(type="text", name="")
       br
-      span.label Tutor del estudiante
+
+      span.label Numero telefonico de la persona de contacto en la empresa
       br
-      select(id='selectTutor', name="studentTutor")
-        each val in tutors
-          option(value=val._id) #{val.Name} #{val.LastName}
+      input(type="text", name="")
       br
-      span.label Periodo de estudiante
+
+      span.label Fecha de inicio de la pasantia
       br
-      select(id='studentPeriod', name="studentPeriod")
-        option(value='2015-A') 2015-A
-        option(value='2015-B') 2015-B
+      input(type="text", name="")
       br
-      span.label Creditos acumulados de estudiante
+
+      span.label Fecha de finalizacion pasantia
       br
-      input(type="number", name="studentCreditsAc")
+      input(type="text", name="")
       br
-      span.label Codigo de estudiante
+
+      span.label Cantidad de horas que labora en la empresa
       br
-      input(type="number", name="studentCod")
+      input(type="text", name="")
       br
-      span.label Numero Celular de estudiante
-      br
-      input(type="number", name="studentPhone")
-      br
-      span.label Numero telefonico convencional de estudiante
-      br
-      input(type="number", name="studentCellPhone")
-      br
+
+
     div.actions
       input(type="submit", value="Enviar")

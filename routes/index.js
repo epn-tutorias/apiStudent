@@ -27,21 +27,30 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/createStudent', function (req, res){
+	
+	res.render('createStudent', { title: 'Crear Estudiante',
+		  								students : students,
+		  								tutors : tutors })
+})
+
+router.get('/createQuiz', function (req, res){
+	res.render('createProfessional', {prueba : questions})
+})
+
+router.get('/createInfoPasan', function (req, res){
+	res.render('createGraduate')
+})
+
+router.get('/updateStudent', function (req, res){
 	tutordb.findAllTutors(function (err, tutors) {
 		studentdb.findAllStudents(function (err, students) {
 			if (err) res.send('Error: ' + err)
-			else res.render('createStudent', { title: 'Crear Estudiante',
+			else res.render('updateDataStudent', { title: 'Completar datos de tutorias',
 		  								students : students,
 		  								tutors : tutors })
 		})
 	})
 })
-
-router.get('/createQuiz', function (req, res){
-	console.log(questions)
-	res.render('createProfessional', {prueba : questions})
-})
-
 
 router.get('/createTutor', function (req, res){
 	if (req.session.rol == 'user' || req.session.rol == 'admin' && req.session.name != undefined) res.render('createTutor', { title: 'Registro de Tutor' })
