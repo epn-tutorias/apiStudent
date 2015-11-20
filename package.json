@@ -17,8 +17,10 @@
     "method-override": "^2.3.5",
     "mongoose": "^4.1.8",
     "morgan": "~1.6.1",
+    "nib": "^1.1.0",
     "nodemailer": "^1.8.0",
     "serve-favicon": "~2.3.0",
+    "stylus": "^0.52.4",
     "winston": "^1.0.2"
   }
 }

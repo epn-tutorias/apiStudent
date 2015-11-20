@@ -1,7 +1,9 @@
 extends layout
 
-block content
+block header
   h1= title
+
+block content
   div
     table(border='1')
       tr: #{title}
@@ -18,3 +20,11 @@ block content
             a(href="/notes/delete/" + val._id.toString()) Borrar
   button(type="button",onclick="location.href='/createNote';").
     Crear Nota
+block sidebar
+  h1
+  p
+    | Menu
+  li
+    a(href='/createStudent') Crear cuenta estudiante
+  li
+    a(href='/createTutor') Crear cuenta tutor

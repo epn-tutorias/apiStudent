@@ -22,7 +22,9 @@ module.exports = function(){
 			Students.findById(req.params.id, function(err, student) {
 		  		student.Name 		= req.body.studentName 		 
 				student.LastName 	= req.body.studentLastName 	  
-				student.Email 		= req.body.studentEmail 	  
+				student.Email 		= req.body.studentEmail
+				Genere				= req.body.studentGenere
+				Province 			= req.body.studentProvince 	  
 				student.Career	 	= req.body.studentCareer 	  
 				student.Rol 		= req.body.studentRol 		  
 				student.Password 	= req.body.studentPassword 	  
@@ -48,7 +50,9 @@ module.exports = function(){
 					Name 		: req.body.studentName,  
 					LastName 	: req.body.studentLastName, 
 					Ident		: req.body.studentIdent,  
-					Email 		: req.body.studentEmail,  
+					Email 		: req.body.studentEmail,
+					Genere		: req.body.studentGenere,
+					Province 	: req.body.studentProvince,
 					Career	 	: req.body.studentCareer,  
 					Rol 		: req.body.studentRol,  
 					Password 	: req.body.studentPassword,  

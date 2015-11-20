@@ -1,7 +1,9 @@
 extends layout
 
-block content
+block header
   h1= title
+
+block content
   div
   table(border='1')
     tr: #{title}
@@ -15,3 +17,11 @@ block content
         td= user.Rol
         td
           a(href="/users/delete/" + user._id.toString()) Borrar
+block sidebar
+  h1
+  p
+    | Menu
+  li
+    a(href='/createStudent') Crear cuenta estudiante
+  li
+    a(href='/createTutor') Crear cuenta tutor

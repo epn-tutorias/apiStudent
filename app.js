@@ -7,13 +7,15 @@ var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var methodOverride = require('method-override');
 var session       = require('express-session')
-
+var stylus = require('stylus')
+var nib = require('nib')
 var loggerW = require('./lib/logger')
 
 mongoose.connect('mongodb://localhost/students', function(err, res){
   if(err) loggerW.error('Error: to connecting to Database students. ' + err)
   else loggerW.info('Connected to Database students')
 })
+
 
 
 var routes    =  require('./routes/index');
@@ -24,7 +26,23 @@ var users     =  require('./routes/users')
 var notes     =  require('./routes/notes')
 var professional     =  require('./routes/professional')
 
+
+
+
 var app = express();
+
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+    .use(nib())
+}
+
+app.use(stylus.middleware(
+  { src: __dirname + '/public', 
+    compile: compile,
+    compress: true
+  }
+))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

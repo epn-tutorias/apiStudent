@@ -28,9 +28,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/createStudent', function (req, res){
 	
-	res.render('createStudent', { title: 'Crear Estudiante',
-		  								students : students,
-		  								tutors : tutors })
+	res.render('createStudent', { title: 'Crear Estudiante'})
 })
 
 router.get('/createQuiz', function (req, res){

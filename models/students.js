@@ -6,6 +6,7 @@ var studentSchema = new Schema({
 	LastName 	: { type : String, required : true},
 	Genere		: { type : String, enum : ['male' , 'female']},
 	Email 		: { type : String, required : true, index: { unique: true }, match: [/.+\@.+\..+/, "Please fill a valid email address"]},
+	Province	: { type : String},
 	Career	 	: { type : String, enum : ['mecanica' , 'materiales' , 'mecatronica'], default : 'mecanica'},
 	Rol 		: { type : String, enum: ['student' , 'graduate' , 'professional']},
 	Password 	: { type : String, required : true},
