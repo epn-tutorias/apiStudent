@@ -4,8 +4,6 @@ block header
   h1= title
 
 block content
-
-  div
     table(border='1')
       tr: #{title}
         th Cantidad
@@ -27,6 +25,7 @@ block content
             a(href="../../createNote/" + val._id.toString()) Crear Nota
   button(type="button",onclick="location.href='/createStudent';").
     Crear Estudiante
+
 block sidebar
   h1
   p

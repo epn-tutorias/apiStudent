@@ -18,6 +18,14 @@ li {
   font-size: 14px;
   font-weight: 300;
 }
+a {
+  text-decoration: none;
+  color: #fff;
+  border: 2px #0d81d5 solid;
+  background-color: #0d81d5;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px 0px #000;
+}
 header h1 {
   width: 100%;
   margin: 10px 0 15px 0;
@@ -59,4 +67,7 @@ footer {
 .contenedorpie p {
   padding: 5px 15px;
   color: #dfdfdf;
+}
+table {
+  font-size: 15px;
 }
