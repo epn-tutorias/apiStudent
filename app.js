@@ -5,44 +5,19 @@ var logger        = require('morgan');
 var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
-var methodOverride = require('method-override');
-var session       = require('express-session')
-var stylus = require('stylus')
-var nib = require('nib')
+
 var loggerW = require('./lib/logger')
 
-mongoose.connect('mongodb://localhost/students', function(err, res){
-  if(err) loggerW.error('Error: to connecting to Database students. ' + err)
-  else loggerW.info('Connected to Database students')
+mongoose.connect('mongodb://localhost/appFIM', function(err, res){
+  if(err) loggerW.error('Error: to connecting to Database appFIM. ' + err)
+  else loggerW.info('Connected to Database appFIM')
 })
 
-
-
 var routes    =  require('./routes/index');
-var students  =  require('./routes/students');
-var tutors    =  require('./routes/tutors');
-var sessions  =  require('./routes/sessions')
-var users     =  require('./routes/users')
-var notes     =  require('./routes/notes')
-var professional     =  require('./routes/professional')
-
-
-
+var users     =  require('./routes/users');
+var graduate = require('./routes/graduate');
 
 var app = express();
-
-function compile(str, path) {
-  return stylus(str)
-    .set('filename', path)
-    .use(nib())
-}
-
-app.use(stylus.middleware(
-  { src: __dirname + '/public', 
-    compile: compile,
-    compress: true
-  }
-))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,19 +30,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(methodOverride())
-
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true }))
-
-
 
 app.use('/', routes);
-app.use('/students', students);
-app.use('/tutors', tutors);
-app.use('/sessions', sessions)
-app.use('/users',users)
-app.use('/notes', notes)
-app.use('/createQuiz', professional)
+app.use('/users',users);
+app.use('/graduate',graduate);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

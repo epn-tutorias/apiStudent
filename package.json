@@ -15,7 +15,7 @@
     "express-session": "^1.11.3",
     "jade": "~1.11.0",
     "method-override": "^2.3.5",
-    "mongoose": "^4.1.8",
+    "mongoose": "^4.4.10",
     "morgan": "~1.6.1",
     "nib": "^1.1.0",
     "nodemailer": "^1.8.0",

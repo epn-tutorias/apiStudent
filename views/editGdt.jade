@@ -1,0 +1,106 @@
+extends layoutTable
+
+block content
+	section(id="main-content")
+		section(class="wrapper")
+			div(class="row")
+				div(class="col-lg-12")
+					h3(class="page-header") Añadir un Egresado
+						i(class="fa fa-files-o")
+					ol(class="breadcrumb")
+		div(class="row")
+			div(class="col-lg-12")
+				section(class="panel")
+					header(class="panel-heading") Validación de datos
+				div(class="panel-body")
+					div(class="form")
+						
+						form(class="form-validate form-horizontal" id="feedback_form" method="get" action="")
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Cédula
+									span(class="required") *
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text" required)
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Nombres
+									span(class="required") *
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text" required)
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Apellidos
+									span(class="required") *
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text" required)
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Genero
+								div(class="col-lg-10")
+									select(class="form-control input-sm m-bot15")
+										option Masculino
+										option Femenino
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Fecha de Nacimiento
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text")
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Pais
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text")
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Direccion
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text")
+
+							div(class="form-group ")
+								label(for="cemail" class="control-label col-lg-2") Email
+									span(class="required") *
+								div(class="col-lg-10")
+									input(class="form-control " id="cemail" type="email" name="email" required)
+
+							div(class="form-group ")
+								label(for="cemail" class="control-label col-lg-2") Email (Secundario)
+									span(class="required") *
+								div(class="col-lg-10")
+									input(class="form-control " id="cemail" type="email" name="email" required)
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Telefono Convencional
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text" required)
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Celular
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text" required)
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Fecha de inicio carrera
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text" required)
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Fecha de graduación
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text" required)
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Tiempo en la FIM
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text" required)
+
+							div(class="form-group ")
+								label(for="cname" class="control-label col-lg-2") Tema de tesis
+								div(class="col-lg-10")
+									input(class="form-control" id="cname" name="fullname" minlength="5" type="text" required)
+
+
+							div(class="form-group")
+								div(class="col-lg-offset-2 col-lg-10")
+									button(class="btn btn-primary" type="submit") Guardar
+									button(class="btn btn-default" type="button") Cancelar
